@@ -7,8 +7,27 @@
     <title>Thymeleaf in action</title>
 </head>
 <body>
-<div th:fragment="footer">
-    <a href="http://www.baidu.com">Welcome to waylau.com</a>
-</div>
+<div th:replace="~{fragments/header :: header}"></div>
+<h3 th:text="${userModel.title}"></h3>
+<table border="1">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Email</td>
+        <td>Name</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userModel.userList.size()} eq 0">
+        <td colspan="3">当前没有用户信息</td>
+    </tr>
+    <tr th:each=" user : ${userModel.userList}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.name}"></td>
+    </tr>
+    </tbody>
+</table>
+<div th:replace="~{fragments/footer :: footer}"></div>
 </body>
 </html>
