@@ -1,3 +1,18 @@
+server:
+  port: ${SERVER_PORT:33001}
 spring:
   thymeleaf:
     mode: HTML5
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database: mysql
+
+    properties:
+    show-sql: true
+
+  datasource:
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: ${DS_URL:jdbc:mysql://localhost:3306/blog?characterEncoding=UTF-8}
+    username: ${DS_USER:root}
+    password: ${DS_PWD:root}

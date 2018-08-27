@@ -9,6 +9,10 @@
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 <h3 th:text="${userModel.title}"></h3>
+
+<div>
+    <a href="/users/form.html" th:href="@{/users/form}">创建用户</a>
+</div>
 <table border="1">
     <thead>
     <tr>
@@ -24,7 +28,7 @@
     <tr th:each=" user : ${userModel.userList}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.email}"></td>
-        <td th:text="${user.name}"></td>
+        <td ><a th:href="@{ '/users/' + ${user.id}}" th:text="${user.name}"></a></td>
     </tr>
     </tbody>
 </table>
